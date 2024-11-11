@@ -1,5 +1,11 @@
+name: Infrastructure Setup with Terraform
+
 on:
   workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
 
 env:
   AWS_REGION: "ap-south-1"
@@ -23,16 +29,14 @@ jobs:
           fi
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v1  # Try v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Debug AWS Credentials
-        run: |
-          echo "AWS Region: ${{ env.AWS_REGION }}"
-          echo "AWS Access Key ID is set: ${ { secrets.AWS_ACCESS_KEY_ID }:+true }"
+      - name: Check Test Secret
+        run: echo "Test Secret: ${{ secrets.TEST_SECRET }}"
 
       - name: Install Terraform
         run: |
@@ -56,4 +60,4 @@ jobs:
 
       - name: Output Terraform Plan
         run: terraform output
-        working-directory: /tmp/Jump-Server-
+        working-directory: /tmp/Jump-Server-TF
