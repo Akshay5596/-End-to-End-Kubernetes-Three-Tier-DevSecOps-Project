@@ -35,9 +35,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Check Test Secret
-        run: echo "Test Secret: ${{ secrets.TEST_SECRET }}"
-
       - name: Install Terraform
         run: |
           wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
