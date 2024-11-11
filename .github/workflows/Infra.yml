@@ -1,5 +1,3 @@
-name: Infrastructure Setup with Terraform
-
 on:
   workflow_dispatch:
 
@@ -25,14 +23,16 @@ jobs:
           fi
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
-          
-          run: echo " ${{ secrets.AWS_ACCESS_KEY_ID }}"
 
+      - name: Debug AWS Credentials
+        run: |
+          echo "AWS Region: ${{ env.AWS_REGION }}"
+          echo "AWS Access Key ID is set: ${ { secrets.AWS_ACCESS_KEY_ID }:+true }"
 
       - name: Install Terraform
         run: |
@@ -44,7 +44,7 @@ jobs:
         run: |
           mkdir -p /tmp/Jump-Server-TF
           cp -R ./tmp/Jump-Server-TF/* /tmp/Jump-Server-TF
-        working-directory: . # This is the root directory of the repository
+        working-directory: .
 
       - name: Initialize Terraform
         run: terraform init
@@ -56,4 +56,4 @@ jobs:
 
       - name: Output Terraform Plan
         run: terraform output
-        working-directory: /tmp/Jump-Server-TF
+        working-directory: /tmp/Jump-Server-
