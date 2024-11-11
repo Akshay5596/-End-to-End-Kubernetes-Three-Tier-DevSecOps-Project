@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_REGION: "us-east-1"
+  AWS_REGION: env.AWS_REGION
 
 jobs:
   setup-infrastructure:
