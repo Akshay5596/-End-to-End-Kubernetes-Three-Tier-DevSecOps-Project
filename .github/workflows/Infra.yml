@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_REGION: secret.AWS_REGION
+  AWS_REGION: "ap-south-1"
 
 jobs:
   setup-infrastructure:
