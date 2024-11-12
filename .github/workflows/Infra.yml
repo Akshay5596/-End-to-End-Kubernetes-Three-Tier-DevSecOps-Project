@@ -54,9 +54,9 @@ jobs:
          cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF &&  terraform init
        
 
-      - name: Plan Terraform Configuration
-        run:  | 
-         cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform plan
+       # name: Plan Terraform Configuration
+        #run:  | 
+         #cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform plan
       
 
       - name: Apply Terraform Configuration
