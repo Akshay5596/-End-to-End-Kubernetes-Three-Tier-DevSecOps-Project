@@ -56,8 +56,8 @@ jobs:
 
       - name: Apply Terraform Configuration
         run: terraform apply -auto-approve
-        working-directory: /tmp/Jump-Server-TF
+        #working-directory: /tmp/Jump-Server-TF
 
       - name: Output Terraform Plan
         run: terraform output
-        working-directory: /tmp/Jump-Server-TF
+        #working-directory: /tmp/Jump-Server-TF
