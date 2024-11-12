@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "my-aws-bucket1"
+    bucket         = "my-poc-bucketforstatefile"
     region         = "ap-south-1"
     key            = "End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF/terraform.tfstate"
     dynamodb_table = "Lock-Files"
