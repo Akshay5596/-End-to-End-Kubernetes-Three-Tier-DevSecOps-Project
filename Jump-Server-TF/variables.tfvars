@@ -1,4 +1,4 @@
-vpc-name      = "Gihub-vpc"
+vpc-name      = "github-vpc"
 igw-name      = "Github-igw"
 subnet-name   = "Github-subnet"
 rt-name       = "Github-route-table"
