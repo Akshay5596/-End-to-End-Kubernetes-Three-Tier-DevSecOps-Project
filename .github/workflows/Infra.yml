@@ -50,7 +50,8 @@ jobs:
         #working-directory: .
 
       - name: Initialize Terraform
-        run: terraform init
+        run: | 
+         cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project &&  terraform init
         #working-directory: /tmp/Jump-Server-TF
 
       - name: Apply Terraform Configuration
