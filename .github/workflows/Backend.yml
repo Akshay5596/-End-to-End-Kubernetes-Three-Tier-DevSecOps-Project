@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  AWS_REGION: "us-east-1"
+  AWS_REGION: "ap-south-1"
   AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
   AWS_ECR_REPO_NAME: ${{ secrets.AWS_ECR_REPO_NAME }}
   REPOSITORY_URI: "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPO_NAME }}"
