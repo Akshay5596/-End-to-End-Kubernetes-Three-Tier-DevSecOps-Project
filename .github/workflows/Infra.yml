@@ -62,6 +62,11 @@ jobs:
       - name: Apply Terraform Configuration
         run:  | 
          cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform apply -auto-approve -var-file="variables.tfvars"
+
+
+      - name: Destroy Terraform Configuration
+        run: | 
+         cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF &&  terraform Destroy -auto-approve -var-file="variables.tfvars"
       
 
      
