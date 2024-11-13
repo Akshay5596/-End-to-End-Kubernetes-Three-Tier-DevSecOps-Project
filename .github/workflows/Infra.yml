@@ -56,12 +56,12 @@ jobs:
 
        # name: Plan Terraform Configuration
         #run:  | 
-         #cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform plan
+         #cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform plan -var-file="variables.tfvars"
       
 
       - name: Apply Terraform Configuration
         run:  | 
-         cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform apply -auto-approve
+         cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform apply -auto-approve -var-file="variables.tfvars"
       
 
      
