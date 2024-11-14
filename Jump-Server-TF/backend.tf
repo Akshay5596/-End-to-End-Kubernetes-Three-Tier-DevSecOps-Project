@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "garba-121 "
+    bucket         = "garba-121"
     region         = "ap-south-1"
     key            = "End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF/terraform.tfstate"
     dynamodb_table = "Lock-Files"
