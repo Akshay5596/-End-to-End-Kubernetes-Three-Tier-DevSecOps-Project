@@ -46,18 +46,17 @@ jobs:
         run: | 
           cd /home/akshay/actions-runner/_work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform init
 
-      - name: Apply Terraform Configuration
-        run: | 
-          cd /home/akshay/actions-runner/_work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform apply -auto-approve -var-file="variables.tfvars"
+      # - name: Apply Terraform Configuration
+      #   run: | 
+      #     cd /home/akshay/actions-runner/_work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform apply -auto-approve -var-file="variables.tfvars"
 
-      # Manual approval before destroy step
-      - name: Wait for Manual Approval
-        if: ${{ always() }}
-        run: |
-          echo "Waiting for manual approval to destroy infrastructure"
-          sleep 60  # Add a sleep here to simulate waiting (or use an actual approval process)
+      # # Manual approval before destroy step
+      # - name: Wait for Manual Approval
+      #   if: ${{ always() }}
+      #   run: |
+      #     echo "Waiting for manual approval to destroy infrastructure"
+      #     sleep 60  # Add a sleep here to simulate waiting (or use an actual approval process)
 
       - name: Destroy Terraform Configuration
-        if: ${{ github.event.inputs.destroy == 'true' }}
         run: | 
           cd /home/akshay/actions-runner/_work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform destroy -auto-approve -var-file="variables.tfvars"
