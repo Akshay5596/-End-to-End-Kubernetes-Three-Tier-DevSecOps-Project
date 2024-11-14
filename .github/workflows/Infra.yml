@@ -1,7 +1,7 @@
 name: Infrastructure Setup with Terraform
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # This allows you to manually trigger the workflow
 
 permissions:
   id-token: write
@@ -36,11 +36,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-
       - name: Install Terraform
         run: |
           wget -q -O hashicorp.asc https://apt.releases.hashicorp.com/gpg
-          # sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg hashicorp.asc
           echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
           sudo apt update && sudo apt install terraform -y && pwd
 
@@ -52,6 +50,14 @@ jobs:
         run: | 
           cd /home/akshay/actions-runner/_work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform apply -auto-approve -var-file="variables.tfvars"
 
-      # - name: Destroy Terraform Configuration
-      #   run: | 
-      #     cd /home/akshay/actions-runner/_work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform destroy -auto-approve -var-file="variables.tfvars"
+      # Manual approval before destroy step
+      - name: Wait for Manual Approval
+        if: ${{ always() }}
+        run: |
+          echo "Waiting for manual approval to destroy infrastructure"
+          sleep 60  # Add a sleep here to simulate waiting (or use an actual approval process)
+
+      - name: Destroy Terraform Configuration
+        if: ${{ github.event.inputs.destroy == 'true' }}
+        run: | 
+          cd /home/akshay/actions-runner/_work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform destroy -auto-approve -var-file="variables.tfvars"
