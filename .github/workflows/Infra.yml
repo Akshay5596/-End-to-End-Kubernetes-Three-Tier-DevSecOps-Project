@@ -36,6 +36,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
+
       - name: Install Terraform
         run: |
           wget -q -O hashicorp.asc https://apt.releases.hashicorp.com/gpg
