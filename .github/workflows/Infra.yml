@@ -13,7 +13,7 @@ env:
 jobs:
   setup-infrastructure:
     name: Setup AWS Infrastructure with Terraform
-    runs-on: [self-hosted]  # Use self-hosted runner instead of 'ubuntu-latest'
+    runs-on: self-hosted  # Use self-hosted runner instead of 'ubuntu-latest'
     environment: main
 
     steps:
