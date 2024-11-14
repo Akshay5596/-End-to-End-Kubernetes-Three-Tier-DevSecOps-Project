@@ -42,7 +42,7 @@ jobs:
           wget -q -O hashicorp.asc https://apt.releases.hashicorp.com/gpg
           sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg hashicorp.asc
           echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-          sudo apt update && sudo apt install terraform -y
+          sudo apt update && sudo apt install terraform -y && pwd
 
       - name: Initialize Terraform
         run: | 
