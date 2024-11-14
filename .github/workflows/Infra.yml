@@ -46,12 +46,12 @@ jobs:
 
       - name: Initialize Terraform
         run: | 
-          cd /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform init
+          cd /home/akshay/actions-runner/_work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform init
 
       - name: Apply Terraform Configuration
         run: | 
-          cd /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform apply -auto-approve -var-file="variables.tfvars"
+          cd /home/akshay/actions-runner/_work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform apply -auto-approve -var-file="variables.tfvars"
 
-      - name: Destroy Terraform Configuration
-        run: | 
-          cd /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform destroy -auto-approve -var-file="variables.tfvars"
+      # - name: Destroy Terraform Configuration
+      #   run: | 
+      #     cd /home/akshay/actions-runner/_work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform destroy -auto-approve -var-file="variables.tfvars"
