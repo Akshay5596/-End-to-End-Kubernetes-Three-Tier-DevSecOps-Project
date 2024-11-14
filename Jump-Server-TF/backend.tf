@@ -3,10 +3,11 @@ terraform {
     bucket         = "garba-121"
     region         = "ap-south-1"
     key            = "End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF/terraform.tfstate"
-    dynamodb_table = "Lock-Files"
     encrypt        = true
   }
+
   required_version = ">=0.13.0"
+
   required_providers {
     aws = {
       version = ">= 2.7.0"
