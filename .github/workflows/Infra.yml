@@ -13,7 +13,7 @@ env:
 jobs:
   setup-infrastructure:
     name: Setup AWS Infrastructure with Terraform
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]  # Use self-hosted runner instead of 'ubuntu-latest'
     environment: main
 
     steps:
@@ -41,32 +41,16 @@ jobs:
           wget -q -O hashicorp.asc https://apt.releases.hashicorp.com/gpg
           sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg hashicorp.asc
           echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-          sudo apt update && sudo apt install terraform -y && pwd
-
-     # - name: Copy Terraform Directory
-       # run: |
-         # mkdir -p /tmp/Jump-Server-TF
-         # cp -R ./tmp/Jump-Server-TF/* /tmp/Jump-Server-TF
-        #working-directory: .
+          sudo apt update && sudo apt install terraform -y
 
       - name: Initialize Terraform
         run: | 
-         cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF &&  terraform init
-       
-
-       # name: Plan Terraform Configuration
-        #run:  | 
-         #cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform plan -var-file="variables.tfvars"
-      
+          cd /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform init
 
       - name: Apply Terraform Configuration
-        run:  | 
-         cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform apply -auto-approve -var-file="variables.tfvars"
-
+        run: | 
+          cd /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform apply -auto-approve -var-file="variables.tfvars"
 
       - name: Destroy Terraform Configuration
         run: | 
-         cd  /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF &&  terraform destroy -auto-approve -var-file="variables.tfvars"
-      
-
-     
+          cd /home/runner/work/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/-End-to-End-Kubernetes-Three-Tier-DevSecOps-Project/Jump-Server-TF && terraform destroy -auto-approve -var-file="variables.tfvars"
